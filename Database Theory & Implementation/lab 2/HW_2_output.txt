@@ -1,0 +1,170 @@
+> vi lab2.lst
+"lab2.lst" 168 lines, 5470 characters
+SQL> set pause on
+SQL> set pages 30
+SQL> --THIS IS A COMMENT
+SQL> --1.a) Assign empno as Primary Key for the table empbbo2
+SQL>
+SQL> ALTER TABLE empbb02 ADD CONSTRAINT empbb02_empno_pk PRIMARY KEY(EMPNO);
+
+Table altered.
+
+SQL>
+SQL> --1.b) Assign empno as Primary Key for the table infobb02
+SQL>
+SQL> ALTER TABLE infobb02 ADD CONSTRAINT infobb02_empno_pk PRIMARY KEY(EMPNO);
+
+Table altered.
+
+SQL>
+SQL> --1.c) Assign deptno as Primary Key for the table deptbb02
+SQL>
+SQL> ALTER TABLE deptbb02 ADD CONSTRAINT deptbb02_deptno_pk PRIMARY KEY(DEPTNO);
+
+Table altered.
+
+SQL>
+SQL> --2.Check primary key constraint: Insert deptno as null to the table deptbbo2
+SQL>
+SQL> INSERT INTO deptbb02 VALUES(null,'infield','PF Chang','La Jolla','YOLO');
+INSERT INTO deptbb02 VALUES(null,'infield','PF Chang','La Jolla','YOLO')
+                            *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("ST33"."DEPTBB02"."DEPTNO")
+
+
+SQL>
+SQL> --3.Assign primary key for the table salsbb02
+SQL>
+SQL> ALTER TABLE salsbb02 ADD CONSTRAINT salsbb02_grade_role_pk PRIMARY KEY(GRADE,ROLE);
+
+Table altered.
+
+SQL>
+SQL> --4.Set Unique key constraint to the table deptbb02
+SQL>
+SQL> ALTER TABLE deptbb02 ADD CONSTRAINT deptbb02_dname_uk UNIQUE(DNAME);
+
+Table altered.
+
+SQL>
+SQL> --5.Format the display of deptbb02 without wrapping the moto column
+SQL> --BEFORE FORMATTING
+SQL> SELECT * FROM DEPTBB02;
+
+Mon Jul 13                                                             page    1
+                                    Lab # 2
+                                      CS514
+
+    DEPTNO DNAME    RESTAURANT      LOCATION
+---------- -------- --------------- ---------------
+MOTTO
+------------------------------
+        10 infield  Jade            Clairmont
+Let's play two!
+
+        20 outfield House of Pasta  Santee
+Alea iacta est
+
+        30 pitcher  Crab Shack      Pacific Beach
+Semper paratus
+
+        40 staff    Burger King     Lakeside
+Experientia docet
+
+        50 catchers Pinnacle Peak   Santee
+Non bastardi carborundum
+
+
+
+
+
+
+                                  Report Done
+
+SQL> COLUMN MOTTO FORMAT a25
+SQL> --AFTER FORMATTING
+SQL> /
+
+Mon Jul 13                                                             page    1
+                                    Lab # 2
+                                      CS514
+
+    DEPTNO DNAME    RESTAURANT      LOCATION        MOTTO
+---------- -------- --------------- --------------- -------------------------
+        10 infield  Jade            Clairmont       Let's play two!
+        20 outfield House of Pasta  Santee          Alea iacta est
+        30 pitcher  Crab Shack      Pacific Beach   Semper paratus
+        40 staff    Burger King     Lakeside        Experientia docet
+        50 catchers Pinnacle Peak   Santee          Non bastardi carborundum
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  Report Done
+
+SQL> --6.a)Set empno from infobb02 as the Foreign key with empbb02 as parent table
+SQL> ALTER TABLE infobb02 ADD CONSTRAINT infobb02_empbb02_fk
+  2  FOREIGN KEY(EMPNO) REFERENCES empbb02(EMPNO);
+
+Table altered.
+
+SQL>
+SQL> --6.b)Set deptno from empbb02 as the Foreign key with deptbb02 as parent table
+SQL>
+SQL> ALTER TABLE empbb02 ADD CONSTRAINT empbb02_deptbb02_fk
+  2  FOREIGN KEY(DEPTNO) REFERENCES deptbb02(DEPTNO);
+
+Table altered.
+
+SQL>
+SQL> --7.Add Check constraint to last name starting with 'Q'
+SQL>
+SQL> ALTER TABLE empbb02 ADD CONSTRAINT empbb02_ename_ck
+  2  CHECK(SUBSTR(ENAME,1,1) NOT IN('q','Q'));
+
+Table altered.
+
+SQL>
+SQL> --8.Test the Check constraint Try to hire a player whose name is Dan Quiseberry
+SQL>
+SQL> INSERT INTO empbb02 VALUES('745','Quiseberry','pitcher','798','21-OCT-1999',25000,30,4000);
+INSERT INTO empbb02 VALUES('745','Quiseberry','pitcher','798','21-OCT-1999',25000,30,4000)
+*
+ERROR at line 1:
+ORA-02290: check constraint (ST33.EMPBB02_ENAME_CK) violated
+
+
+SQL>
+SQL> --9.Try dropping the parent table linked with the child table using foreign key
+SQL>
+SQL> DROP TABLE empbb02 PURGE;
+DROP TABLE empbb02 PURGE
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys
+
+
+SQL> DROP TABLE deptbb02 PURGE;
+DROP TABLE deptbb02 PURGE
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys
+
+
+SQL>
+SQL> --set echo off
+SQL> spool off

@@ -1,0 +1,83 @@
+
+
+                                        APL
+                                    SR ASSIGNMENT
+
+                                                     AYISHWARYA NARASIMHAN
+                                                     RED ID: 818473715
+                                                     masc0877
+
+Script started on Thu Dec 03 13:15:41 2015
+> vi sr_hw.sr
+"sr_hw.sr" 18 lines, 656 characters 
+
+resource barrier()
+  const N := 4                                  # number of processes
+  sem done := 1, continue[N] := ([N] 0)         # semaphores shared by workers
+  var x := 0                                    # shared variable
+  process worker(i := 1 to N)
+    fa w := 1 to 10 ->
+        write("process",i,"doing job",w)
+        P(done)                                 # enter critical section
+        x := x + 1                              # increment the counter
+        V(done)                                 # exit critical section
+        if x = 4 -> 
+                   V(continue[N])
+        fi
+        P(continue[N])
+        V(continue[N])
+    af
+  end
+end
+~
+~
+~
+~
+~"sr_hw.sr" 18 lines, 656 characters
+
+> sr sr_hw.sr
+> a.out
+process 1 doing job 1
+process 2 doing job 1
+process 3 doing job 1
+process 4 doing job 1
+process 1 doing job 2
+process 2 doing job 2
+process 3 doing job 2
+process 4 doing job 2
+process 1 doing job 3
+process 2 doing job 3
+process 3 doing job 3
+process 4 doing job 3
+process 1 doing job 4
+process 2 doing job 4
+process 3 doing job 4
+process 4 doing job 4
+process 1 doing job 5
+process 2 doing job 5
+process 3 doing job 5
+process 4 doing job 5
+process 1 doing job 6
+process 2 doing job 6
+process 3 doing job 6
+process 4 doing job 6
+process 1 doing job 7
+process 2 doing job 7
+process 3 doing job 7
+process 4 doing job 7
+process 1 doing job 8
+process 2 doing job 8
+process 3 doing job 8
+process 4 doing job 8
+process 1 doing job 9
+process 2 doing job 9
+process 3 doing job 9
+process 4 doing job 9
+process 1 doing job 10
+process 2 doing job 10
+process 3 doing job 10
+process 4 doing job 10
+> ^Dexit
+
+script done on Thu Dec 03 13:16:19 2015
+

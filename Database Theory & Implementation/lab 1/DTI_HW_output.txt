@@ -1,0 +1,189 @@
+
+
+> vi fred.lst
+"fred.lst" 178 lines, 8080 characters
+SP2-0158: unknown SET option "--"
+SQL>   set pause on
+SQL>   set pages 30
+SQL> -- this is a comment
+SQL> desc empbb02
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              VARCHAR2(5)
+ ENAME                                     NOT NULL VARCHAR2(10)
+ POS                                                VARCHAR2(12)
+ BOSS                                               VARCHAR2(4)
+ HIREDATE                                           DATE
+ SAL                                                NUMBER(6)
+ DEPTNO                                             NUMBER(2)
+ INCENTIVES                                         NUMBER(6)
+
+
+
+
+
+
+
+SQL> select * from empbb02;
+
+
+
+
+
+Thrus Jul 09                                                             page    1
+                                 First example
+                                     CS 514
+
+EMPNO ENAME      POS          BOSS HIREDATE         SAL     DEPTNO INCENTIVES
+----- ---------- ------------ ---- --------- ---------- ---------- ----------
+712   rickey     gm                01-JAN-98      10000         40
+735   lasorda    coach        712  10-JAN-98       2000         40
+707   bochy      coach        712  11-JAN-98       2000         40
+798   berra      coach        712  12-JAN-98       2000         40
+782   musial     right field  707  01-FEB-98      42000         20
+763   gehrig     first base   735  11-MAR-98      85000         10
+777   minoso     shortstop    735  05-MAY-98      85000         10       6000
+721   sandberg   second base  735  28-FEB-98      25000         10
+788   cey        third base   735  10-JAN-99      15000         10       8000
+720   williams   left field   707  05-JAN-99     150000         20
+755   johnson    pitcher      798  08-NOV-98      50000         30
+744   brown      pitcher      798  18-OCT-99      40000         30       4000
+730   mays       center field 707  01-JAN-96     240000         20
+799   mungo      pitcher      798  10-MAR-00      20000         30      12000
+766   rodriguez  catcher      735  16-OCT-01     100000         50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  Report Done
+
+15 rows selected.
+
+
+
+SQL> desc infobb02
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              VARCHAR2(5)
+ FNAME                                              VARCHAR2(10)
+ NICK                                               VARCHAR2(15)
+ UNI                                                VARCHAR2(4)
+ AVERAGE                                            NUMBER(4)
+ ERA                                                NUMBER(6,3)
+
+
+SQL> select * from infobb02;
+
+
+Thrus Jul 09                                                             page    1
+                                 First example
+                                     CS 514
+
+EMPNO FNAME      NICK            UNI     AVERAGE        ERA
+----- ---------- --------------- ---- ---------- ----------
+712   branch                     56
+735   tommy                      62
+707   bruce                      64          220
+777   orestes    minnie          27          270         32
+763   lou        iron horse      14          350
+782   stan       the man         19          342
+798   larry      yogi            66          290
+788   ron        penguin         35          287
+730   willie     say hey kid     12          335
+755   randy      the big unit    8           123       2.15
+744   mordecai   3 fingers       25          168       3.27
+721   ryne       rhino           17          294
+799   van lingle                 31          230       2.82
+720   ted        teddy ballgame  10          350
+766   ivan       pudge           4           339
+
+
+
+
+                                  Report Done
+
+15 rows selected.
+
+SQL> desc deptbb02
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTNO                                             NUMBER(3)
+ DNAME                                              VARCHAR2(8)
+ RESTAURANT                                         VARCHAR2(15)
+ LOCATION                                           VARCHAR2(15)
+ MOTTO                                              VARCHAR2(30)
+
+SQL> select * from deptbb02;
+
+Thrus Jul 09                                                             page    1
+                                 First example
+                                     CS 514
+
+    DEPTNO DNAME    RESTAURANT      LOCATION              MOTTO
+---------- -------- --------------- ----------     ------------------------------
+        10 infield  Jade            Clairmont      Let's play two!
+
+        20 outfield House of Pasta  Santee         Alea iacta est
+
+        30 pitcher  Crab Shack      Pacific Beach  Semper paratus
+
+        40 staff    Burger King     Lakeside       Experientia docet
+
+        50 catchers Pinnacle Peak   Santee         Non bastardi carborundum
+
+
+
+                                  Report Done
+
+
+SQL> desc salsbb02
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ GRADE                                              NUMBER(2)
+ ROLE                                               VARCHAR2(8)
+ LOSAL                                              NUMBER(6)
+ HISAL                                              NUMBER(6)
+
+
+
+SQL> select * from salsbb02;
+
+
+
+Thrus Jul 09                                                             page    1
+                                 First example
+                                     CS 514
+
+     GRADE ROLE          LOSAL      HISAL
+---------- -------- ---------- ----------
+         1 staff          1000       5000
+         2 staff          5001      10000
+         1 hitter         5000      15000
+         2 hitter        15001      50000
+         3 hitter        50001     250000
+         1 pitcher        5000      25000
+         2 pitcher       25001     125000
+
+
+
+
+
+
+
+
+                                  Report Done
+
+7 rows selected.
+
+
+SQL> set echo off

@@ -1,0 +1,74 @@
+> vi hw2_updates.lst
+"hw2_updates.lst" 114 lines, 5414 characters
+SQL> desc empbb02
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL VARCHAR2(5)
+ ENAME                                     NOT NULL VARCHAR2(10)
+ POS                                                VARCHAR2(12)
+ BOSS                                               VARCHAR2(4)
+ HIREDATE                                           DATE
+ SAL                                                NUMBER(6)
+ DEPTNO                                             NUMBER(2)
+ INCENTIVES                                         NUMBER(6)
+
+SQL> desc infobb02
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL VARCHAR2(5)
+ FNAME                                              VARCHAR2(10)
+ NICK                                               VARCHAR2(15)
+ UNI                                                VARCHAR2(4)
+ AVERAGE                                            NUMBER(4)
+ ERA                                                NUMBER(6,3)
+
+SQL> desc deptbb02
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPTNO                                    NOT NULL NUMBER(3)
+ DNAME                                              VARCHAR2(8)
+ RESTAURANT                                         VARCHAR2(15)
+ LOCATION                                           VARCHAR2(15)
+ MOTTO                                              VARCHAR2(30)
+
+SQL> desc salsbb02
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ GRADE                                     NOT NULL NUMBER(2)
+ ROLE                                      NOT NULL VARCHAR2(8)
+ LOSAL                                              NUMBER(6)
+ HISAL                                              NUMBER(6)
+
+SQL> SET PAGES 200
+SQL> SELECT OWNER,CONSTRAINT_NAME,CONSTRAINT_TYPE,TABLE_NAME FROM USER_CONSTRAIN
+TS;
+
+OWNER                          CONSTRAINT_NAME                C
+------------------------------ ------------------------------ -
+TABLE_NAME
+------------------------------
+ST33                           EMPBB02_EMPNO_PK               P
+EMPBB02
+
+ST33                           INFOBB02_EMPNO_PK              P
+INFOBB02
+
+ST33                           SYS_C00162229                  C
+EMPBB02
+
+ST33                           DEPTBB02_DEPTNO_PK             P
+DEPTBB02
+
+ST33                           SALSBB02_GRADE_ROLE_PK         P
+SALSBB02
+
+ST33                           DEPTBB02_DNAME_UK              U
+DEPTBB02
+
+ST33                           INFOBB02_EMPBB02_FK            R
+INFOBB02
+
+ST33                           EMPBB02_DEPTBB02_FK            R
+EMPBB02
+
+SQL> spool off
