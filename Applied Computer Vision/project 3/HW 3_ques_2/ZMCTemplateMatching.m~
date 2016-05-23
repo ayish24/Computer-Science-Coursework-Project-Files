@@ -1,0 +1,10 @@
+function m = ZMCTemplateMatching(template, image)
+
+	temp = template - mean(template(:));
+	img = image;
+    f = fspecial('average');
+    temp_f = 
+    m = imfilter(img, temp);
+
+	
+
