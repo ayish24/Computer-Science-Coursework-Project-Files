@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<CS635Document>
+    <header> This is an example1 </header>
+    <header> This is sample </header>
+    <text>Not much here</text>
+    <CS635Document>
+        <text>Just text here</text>
+    </CS635Document>
+</CS635Document>
